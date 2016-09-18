@@ -69,6 +69,7 @@
 	var ReactDOM = __webpack_require__(158);
 	var MyTitle = __webpack_require__(159);
 
+	/* stateless component */
 	var First = function First() {
 	  return React.createElement(
 	    'div',

@@ -21,7 +21,7 @@ const MyTitle = React.createClass({
   render () {
     return (
       <div>
-        <h1 style={ {color: this.props.color} }>
+        <h1 style={{color: this.props.color}}>
           {this.props.title}
         </h1>
       </div>

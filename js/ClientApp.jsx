@@ -21,14 +21,13 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const MyTitle = require('./MyTitle.jsx')
 
-const First = function () {
-  return (
+/* stateless component */
+const First = () => (
     <div>
-      <MyTitle title="Whatever" color="rebeccapurple" />
-      <MyTitle title="LOL" color="papayawhip" />
-      <MyTitle title="fIVEDOG" color="peru" />
+      <MyTitle title='Whatever' color='rebeccapurple' />
+      <MyTitle title='LOL' color='papayawhip' />
+      <MyTitle title='fIVEDOG' color='peru' />
     </div>
   )
-}
 
 ReactDOM.render(<First />, document.getElementById('app'))
