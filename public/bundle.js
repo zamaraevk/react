@@ -67,20 +67,31 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var MyTitle = __webpack_require__(159);
 
 	/* stateless component */
-	var First = function First() {
+	var App = function App() {
 	  return React.createElement(
 	    'div',
-	    null,
-	    React.createElement(MyTitle, { title: 'Whatever', color: 'rebeccapurple' }),
-	    React.createElement(MyTitle, { title: 'LOL', color: 'papayawhip' }),
-	    React.createElement(MyTitle, { title: 'fIVEDOG', color: 'peru' })
+	    { className: 'app-container' },
+	    React.createElement(
+	      'div',
+	      { className: 'home-info' },
+	      React.createElement(
+	        'h1',
+	        { className: 'title' },
+	        'svideo???'
+	      ),
+	      React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
+	      React.createElement(
+	        'button',
+	        { className: 'browse-all' },
+	        ' or Browse All'
+	      )
+	    )
 	  );
 	};
 
-	ReactDOM.render(React.createElement(First, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -19823,48 +19834,6 @@
 	'use strict';
 
 	module.exports = __webpack_require__(3);
-
-/***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/* ORIGINAL
-	var div = React.DOM.div
-	var h1 = React.DOM.h1
-
-	var MyTitle = React.createClass({
-	  render () {
-	    return (
-	      div(null,
-	        h1({style: {color: this.props.color}}, this.props.title)
-	      )
-	    )
-	  }
-	})
-
-	module.exports = MyTitle
-	*/
-
-	var React = __webpack_require__(1);
-
-	var MyTitle = React.createClass({
-	  displayName: 'MyTitle',
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'h1',
-	        { style: { color: this.props.color } },
-	        this.props.title
-	      )
-	    );
-	  }
-	});
-
-	module.exports = MyTitle;
 
 /***/ }
 /******/ ]);
