@@ -29,6 +29,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
+      },
+      // react talking json
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }
