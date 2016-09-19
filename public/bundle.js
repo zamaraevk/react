@@ -19857,7 +19857,7 @@
 	    React.createElement(
 	      'h1',
 	      { className: 'title' },
-	      'svideo???'
+	      'svideo'
 	    ),
 	    React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
 	    React.createElement(
