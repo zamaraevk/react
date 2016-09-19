@@ -69,11 +69,13 @@
 	var ReactDOM = __webpack_require__(158);
 	var Landing = __webpack_require__(159);
 	var Search = __webpack_require__(223);
+	var Layout = __webpack_require__(226);
 
 	var _require = __webpack_require__(160);
 
 	var Router = _require.Router;
 	var Route = _require.Route;
+	var IndexRoute = _require.IndexRoute;
 	var hashHistory = _require.hashHistory;
 
 	/* stateless component */
@@ -82,8 +84,12 @@
 	  return React.createElement(
 	    Router,
 	    { history: hashHistory },
-	    React.createElement(Route, { path: '/', component: Landing }),
-	    React.createElement(Route, { path: '/search', component: Search })
+	    React.createElement(
+	      Route,
+	      { path: '/', component: Layout },
+	      React.createElement(IndexRoute, { component: Landing }),
+	      React.createElement(Route, { path: '/search', component: Search })
+	    )
 	  );
 	};
 
@@ -19847,21 +19853,17 @@
 	var Landing = function Landing() {
 	  return React.createElement(
 	    'div',
-	    { className: 'app-container' },
+	    { className: 'home-info' },
 	    React.createElement(
-	      'div',
-	      { className: 'home-info' },
-	      React.createElement(
-	        'h1',
-	        { className: 'title' },
-	        'svideo???'
-	      ),
-	      React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
-	      React.createElement(
-	        Link,
-	        { to: '/search', className: 'browse-all' },
-	        ' or Browse All'
-	      )
+	      'h1',
+	      { className: 'title' },
+	      'svideo???'
+	    ),
+	    React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
+	    React.createElement(
+	      Link,
+	      { to: '/search', className: 'browse-all' },
+	      ' or Browse All'
 	    )
 	  );
 	};
@@ -25796,6 +25798,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var React = __webpack_require__(1);
 	var data = __webpack_require__(224);
 	var ShowCard = __webpack_require__(225);
@@ -25808,7 +25812,7 @@
 	      'div',
 	      { className: 'shows' },
 	      data.shows.map(function (show) {
-	        return React.createElement(ShowCard, { show: show, key: show.imdbID });
+	        return React.createElement(ShowCard, _extends({}, show, { key: show.imdbID }));
 	      })
 	    )
 	  );
@@ -26005,36 +26009,67 @@
 	  return React.createElement(
 	    'div',
 	    { className: 'show-card' },
-	    React.createElement('img', { src: 'public/img/posters/' + props.show.poster, className: 'show-card-img' }),
+	    React.createElement('img', { src: 'public/img/posters/' + props.poster, className: 'show-card-img' }),
 	    React.createElement(
 	      'div',
 	      { className: 'show-card-text' },
 	      React.createElement(
 	        'h3',
 	        { className: 'show-card-title' },
-	        props.show.title
+	        props.title
 	      ),
 	      React.createElement(
 	        'h4',
 	        { className: 'show-card-year' },
 	        '(',
-	        props.show.year,
+	        props.year,
 	        ')'
 	      ),
 	      React.createElement(
 	        'p',
 	        { className: 'show-card-description' },
-	        props.show.description
+	        props.description
 	      )
 	    )
 	  );
 	};
 
+	var string = React.PropTypes.string;
+
+
 	ShowCard.propTypes = {
-	  show: React.PropTypes.object.isRequired
+	  title: string.isRequired,
+	  description: string.isRequired,
+	  year: string.isRequired,
+	  poster: string.isRequired
 	};
 
 	module.exports = ShowCard;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var Layout = function Layout(props) {
+	  return React.createElement(
+	    "div",
+	    { className: "app-container" },
+	    props.children
+	  );
+	};
+
+	var element = React.PropTypes.element;
+
+
+	Layout.propTypes = {
+	  children: element.isRequired
+	};
+
+	module.exports = Layout;
 
 /***/ }
 /******/ ]);
