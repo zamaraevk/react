@@ -19,15 +19,19 @@ ReactDOM.render(First, document.getElementById('app'))
 
 const React = require('react')
 const ReactDOM = require('react-dom')
-const MyTitle = require('./MyTitle.jsx')
+const Landing = require('./Landing')
+const Search = require('./Search')
+const Layout = require('./Layout')
+const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 
 /* stateless component */
-const First = () => (
-    <div>
-      <MyTitle title='Whatever' color='rebeccapurple' />
-      <MyTitle title='LOL' color='papayawhip' />
-      <MyTitle title='fIVEDOG' color='peru' />
-    </div>
+const App = () => (
+  <Router history={hashHistory}>
+    <Route path='/' component={Layout}>
+      <IndexRoute component={Landing} />
+      <Route path='/search' component={Search} />
+    </Route>
+  </Router>
   )
 
-ReactDOM.render(<First />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
