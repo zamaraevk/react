@@ -1,5 +1,5 @@
 // <pre><code>{JSON.stringify(this.props, null, 4)}</code></pre>
-
+const Header = require('./Header')
 const React = require('react')
 
 class Details extends React.Component {
@@ -9,9 +9,7 @@ class Details extends React.Component {
     const { title, description, year, poster, trailer } = params
     return (
       <div className="container">
-        <header className="header">
-          <h1 className="brand">svideo</h1>
-        </header>
+        <Header />
         <div className="video-info">
           <h1 className="video-title">{title}</h1>
           <h2 className="video-year">({year})</h2>
