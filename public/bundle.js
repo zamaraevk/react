@@ -25950,22 +25950,52 @@
 	  _createClass(Details, [{
 	    key: "render",
 	    value: function render() {
+	      // params validation
+	      var params = this.props.params || {};
+	      var title = params.title;
+	      var description = params.description;
+	      var year = params.year;
+	      var poster = params.poster;
+	      var trailer = params.trailer;
+
 	      return React.createElement(
 	        "div",
 	        { className: "container" },
 	        React.createElement(
-	          "h1",
-	          null,
-	          "hi"
+	          "header",
+	          { className: "header" },
+	          React.createElement(
+	            "h1",
+	            { className: "brand" },
+	            "svideo"
+	          )
 	        ),
 	        React.createElement(
-	          "pre",
-	          null,
+	          "div",
+	          { className: "video-info" },
 	          React.createElement(
-	            "code",
-	            null,
-	            JSON.stringify(this.props.params, null, 4)
+	            "h1",
+	            { className: "video-title" },
+	            title
+	          ),
+	          React.createElement(
+	            "h2",
+	            { className: "video-year" },
+	            "(",
+	            year,
+	            ")"
+	          ),
+	          React.createElement("img", { src: "public/img/posters/" + poster, alt: "", className: "video-poster" }),
+	          React.createElement(
+	            "p",
+	            { className: "video-description" },
+	            description
 	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "video-container" },
+	          React.createElement("iframe", { src: "https://www.youtube-nocookie.com/embed/" + trailer + "?rel=0&amp;controls=0&amp;showinfo=0", frameBorder: "0", allowFullScreen: true })
 	        )
 	      );
 	    }
@@ -25973,6 +26003,13 @@
 
 	  return Details;
 	}(React.Component);
+
+	var object = React.PropTypes.object;
+
+
+	Details.propTypes = {
+	  params: object.isRequired
+	};
 
 	module.exports = Details;
 
