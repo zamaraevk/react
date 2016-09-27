@@ -25,8 +25,9 @@ const Details = require('./Details')
 const Layout = require('./Layout')
 const { shows } = require('../public/data')
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
+const { store } = require('./Store')
+const { Provider } = require('react-redux')
 
-/* stateless component */
 const App = React.createClass({
   assignShow (nextState, replace) {
     const showArray = shows.filter((show) => show.imdbID === nextState.params.id)
@@ -40,13 +41,15 @@ const App = React.createClass({
   },
   render () {
     return (
-      <Router history={hashHistory}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Landing} />
-          <Route path='/search' component={Search} shows={shows} />
-          <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
-        </Route>
-      </Router>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path='/' component={Layout}>
+            <IndexRoute component={Landing} />
+            <Route path='/search' component={Search} shows={shows} />
+            <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
+          </Route>
+        </Router>
+      </Provider>
         )
   }
 })
